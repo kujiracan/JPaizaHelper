@@ -1,9 +1,9 @@
 package net.kujiracan.paiza.common;
 
-import java.io.BufferedReader;
 import java.io.ByteArrayInputStream;
-import java.io.FileReader;
+import java.io.File;
 import java.lang.reflect.Method;
+import java.util.Scanner;
 
 public abstract class PaizaHelper {
 
@@ -44,10 +44,9 @@ public abstract class PaizaHelper {
 	 */
 	public static void exec2(String className, int tryNum, String filePath) {
 		StringBuilder sb = new StringBuilder();
-		try(BufferedReader r = new BufferedReader(new FileReader(filePath))) {
-			String line;
-			while((line = r.readLine()) != null) {
-				sb.append(r).append("\n");
+		try(Scanner sc = new Scanner(new File(filePath))) {
+			while(sc.hasNext()) {
+				sb.append(sc.nextLine()).append("\n");
 			}
 		} catch (Exception e) {
 			// TODO 自動生成された catch ブロック
